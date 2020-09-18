@@ -1,0 +1,4 @@
+trigger:
+  - trunk
+pool:
+  vmImage: windows-2019
