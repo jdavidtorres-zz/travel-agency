@@ -1,5 +1,5 @@
 plugins {
-    id 'org.springframework.boot' version '2.3.2.RELEASE'
+    id 'org.springframework.boot' version '2.3.4.RELEASE'
     id 'java'
     id 'application'
     id 'idea'
@@ -11,6 +11,14 @@ apply plugin: 'io.spring.dependency-management'
 group = 'co.jdti.practice'
 version = '0.0.1'
 sourceCompatibility = '11'
+
+jar {
+    enabled = true
+}
+
+bootJar {
+    archiveFileName = 'agency.jar'
+}
 
 configurations {
     compileOnly {
@@ -26,9 +34,13 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+
     compileOnly 'org.projectlombok:lombok'
-    runtimeOnly 'com.h2database:h2'
     annotationProcessor 'org.projectlombok:lombok'
+
+    runtimeOnly 'com.h2database:h2'
+
     testImplementation('org.springframework.boot:spring-boot-starter-test') {
         exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
     }
@@ -36,4 +48,5 @@ dependencies {
 
 test {
     useJUnitPlatform()
+    maxParallelForks = Runtime.runtime.availableProcessors()
 }
