@@ -1,4 +1,19 @@
+name: Travel Agency CI
+
 trigger:
   - trunk
+
+steps:
+  - task: Gradle@2
+    inputs:
+      workingDirectory: ''
+      gradleWrapperFile: gradlew
+      tasks: clean build jacocoTestReport
+      publishJUnitResults: true
+      testResultsFiles: '**/TEST-*.xml'
+      javaHomeOption: JDKVersion
+      jdkVersionOption: '1.11'
+      sonarQubeRunAnalysis: false
+
 pool:
   vmImage: windows-2019
