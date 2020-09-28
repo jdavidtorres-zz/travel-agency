@@ -3,6 +3,8 @@ name: Travel Agency CI
 on:
   pull_request:
     branches: [ trunk ]
+  push:
+    branches: [ trunk ]
 
 jobs:
   build:
