@@ -3,8 +3,18 @@ name: Travel Agency CI
 on:
   pull_request:
     branches: [ trunk ]
+  push:
+    branches:
+      - trunk
 
 jobs:
+  validation:
+    name: Gradle Validation
+    runs-on: windows-2019
+    steps:
+      - uses: actions/checkout@v2
+      - uses: gradle/wrapper-validation-action@v1
+
   build:
     runs-on: windows-2019
 
