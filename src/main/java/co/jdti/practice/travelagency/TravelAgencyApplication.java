@@ -25,6 +25,8 @@ public class TravelAgencyApplication implements CommandLineRunner {
     public void run(String... args) throws Exception {
         HotelDto newHotel = new HotelDto("Cabaña con estilo y lujo", "Guatape", "Cabaña", 6, 2, 2, 3);
         iHotelServices.save(newHotel);
-        log.info("Primera inserción...");
+        HotelDto newHotel2 = new HotelDto("Hotel Decameron Baru", "Cartagena", "Hotel", 6, 2, 2, 3);
+        iHotelServices.save(newHotel2);
+        log.info("Primera inserción - TEST");
     }
 }
