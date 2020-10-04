@@ -4,7 +4,12 @@ import co.jdti.practice.travelagency.dtos.HotelDto;
 import co.jdti.practice.travelagency.entities.HotelEntity;
 import co.jdti.practice.travelagency.repositories.IHotelRepository;
 import co.jdti.practice.travelagency.services.IHotelServices;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class HotelServices implements IHotelServices {
@@ -18,14 +23,23 @@ public class HotelServices implements IHotelServices {
     @Override
     public HotelDto save(HotelDto hotelToSave) {
         HotelEntity newHotel = new HotelEntity(hotelToSave.getName(), hotelToSave.getCity(), hotelToSave.getType(), hotelToSave.getGuestsQuantity(), hotelToSave.getRoomsQuantity(), hotelToSave.getBathsQuantity(), hotelToSave.getBedsQuantity());
-        newHotel.setId("HOTEL-1");
         iHotelRepository.save(newHotel);
         return hotelToSave;
     }
 
     @Override
     public HotelDto getHotelInfo(String id) {
-        iHotelRepository.getOne(id);
-        return null;
+        HotelEntity hotelEntity = iHotelRepository.getOne(iHotelRepository.findAll().get(0).getId());
+        HotelDto hotel = new HotelDto(hotelEntity.getName(), hotelEntity.getCity(), hotelEntity.getType(), hotelEntity.getGuestsQuantity(), hotelEntity.getRoomsQuantity(), hotelEntity.getBathsQuantity(), hotelEntity.getBedsQuantity());
+        return hotel;
+    }
+
+    @Override
+    public List<HotelDto> getAll() {
+        List<HotelDto> hotelList = new ArrayList<>();
+        for (HotelEntity hotelEntity : iHotelRepository.findAll()) {
+            hotelList.add(new HotelDto(hotelEntity.getName(), hotelEntity.getCity(), hotelEntity.getType(), hotelEntity.getGuestsQuantity(), hotelEntity.getRoomsQuantity(), hotelEntity.getBathsQuantity(), hotelEntity.getBedsQuantity()));
+        }
+        return hotelList;
     }
 }

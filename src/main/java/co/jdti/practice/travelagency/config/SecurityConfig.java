@@ -33,7 +33,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .addFilter(new AuthorizationFilter(authenticationManager()))
                 .csrf().disable()
                 .cors().disable()
-                .authorizeRequests().antMatchers("/status/**", "/register", "/login", "/search-stays/**").permitAll()
+                .authorizeRequests().antMatchers("/status/**", "/register", "/login", "/hotel-data/**").permitAll()
                 .anyRequest().authenticated()
                 .and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and().headers().frameOptions().disable();

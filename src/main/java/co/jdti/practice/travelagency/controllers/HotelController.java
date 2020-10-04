@@ -12,12 +12,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/hotel-data")
 @CrossOrigin("*")
 public class HotelController {
 
-    static final Logger log = LoggerFactory.getLogger(StatusController.class);
+    private static final Logger log = LoggerFactory.getLogger(HotelController.class);
 
     @Autowired
     private IHotelServices iHotelServices;
@@ -25,5 +27,10 @@ public class HotelController {
     @GetMapping("/info")
     public ResponseEntity<HotelDto> getHotelData() {
         return new ResponseEntity<>(iHotelServices.getHotelInfo("HOTEL-1"), HttpStatus.OK);
+    }
+
+    @GetMapping("/all")
+    public ResponseEntity<List<HotelDto>> getAllHotels() {
+        return new ResponseEntity<>(iHotelServices.getAll(), HttpStatus.OK);
     }
 }

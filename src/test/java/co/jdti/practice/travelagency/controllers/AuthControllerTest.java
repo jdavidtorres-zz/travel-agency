@@ -29,7 +29,7 @@ class AuthControllerTest {
     }
 
     @Test
-    public void contextLoads() {
+    void contextLoads() {
         assertThat(mockMvc).isNotNull();
     }
 }
