@@ -1,6 +1,6 @@
 package co.jdti.practice.travelagency.config;
 
-import co.jdti.practice.travelagency.implementations.UserDto;
+import co.jdti.practice.travelagency.dtos.UserDto;
 import co.jdti.practice.travelagency.utils.Constants;
 import co.jdti.practice.travelagency.utils.Utils;
 import com.fasterxml.jackson.databind.ObjectMapper;

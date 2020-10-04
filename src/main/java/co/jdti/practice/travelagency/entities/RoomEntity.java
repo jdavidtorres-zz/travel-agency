@@ -14,11 +14,11 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import java.util.Date;
 
-@Table(name = "users")
+@Table(name = "rooms")
 @Entity
 @Data
 @NoArgsConstructor
-public class UserEntity {
+public class RoomEntity {
 
     @Id
     @GeneratedValue(generator = "uuid")
@@ -27,19 +27,11 @@ public class UserEntity {
     private String id;
 
     @Column(name = "user", nullable = false, columnDefinition = "VARCHAR(50)", length = 50)
-    private String username;
-
-    @Column(name = "password", nullable = false, columnDefinition = "VARCHAR(50)", length = 50)
-    private String password;
+    private String name;
 
     @Column(name = "created_at", nullable = false, updatable = false)
     @Temporal(TemporalType.DATE)
     private Date createdAt;
-
-    public UserEntity(String username, String password) {
-        this.username = username;
-        this.password = password;
-    }
 
     @PrePersist
     private void prePersist() {

@@ -16,8 +16,8 @@ jobs:
       - uses: gradle/wrapper-validation-action@v1
 
   build:
+    name: Gradle Build
     runs-on: windows-2019
-
     steps:
       - uses: actions/checkout@v2
       - name: Set up JDK 1.11

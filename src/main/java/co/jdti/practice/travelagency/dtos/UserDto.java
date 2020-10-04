@@ -1,4 +1,4 @@
-package co.jdti.practice.travelagency.implementations;
+package co.jdti.practice.travelagency.dtos;
 
 import lombok.Data;
 

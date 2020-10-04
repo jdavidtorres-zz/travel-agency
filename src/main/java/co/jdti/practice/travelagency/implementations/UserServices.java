@@ -1,5 +1,6 @@
 package co.jdti.practice.travelagency.implementations;
 
+import co.jdti.practice.travelagency.dtos.UserDto;
 import co.jdti.practice.travelagency.entities.UserEntity;
 import co.jdti.practice.travelagency.repositories.IUserRepository;
 import co.jdti.practice.travelagency.services.IUserServices;
