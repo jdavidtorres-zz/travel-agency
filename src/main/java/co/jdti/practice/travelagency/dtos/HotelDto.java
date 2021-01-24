@@ -17,7 +17,8 @@ public class HotelDto {
     private Integer bedsQuantity;
     private Date createdAt;
 
-    public HotelDto(String name, String city, String type, Integer guestsQuantity, Integer roomsQuantity, Integer bathsQuantity, Integer bedsQuantity) {
+    public HotelDto(String id, String name, String city, String type, Integer guestsQuantity, Integer roomsQuantity, Integer bathsQuantity, Integer bedsQuantity) {
+        this.id = id;
         this.name = name;
         this.city = city;
         this.type = type;

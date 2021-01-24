@@ -4,8 +4,6 @@ import co.jdti.practice.travelagency.dtos.HotelDto;
 import co.jdti.practice.travelagency.entities.HotelEntity;
 import co.jdti.practice.travelagency.repositories.IHotelRepository;
 import co.jdti.practice.travelagency.services.IHotelServices;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -29,8 +27,8 @@ public class HotelServices implements IHotelServices {
 
     @Override
     public HotelDto getHotelInfo(String id) {
-        HotelEntity hotelEntity = iHotelRepository.getOne(iHotelRepository.findAll().get(0).getId());
-        HotelDto hotel = new HotelDto(hotelEntity.getName(), hotelEntity.getCity(), hotelEntity.getType(), hotelEntity.getGuestsQuantity(), hotelEntity.getRoomsQuantity(), hotelEntity.getBathsQuantity(), hotelEntity.getBedsQuantity());
+        HotelEntity hotelEntity = iHotelRepository.getOne(id);
+        HotelDto hotel = new HotelDto(hotelEntity.getId(), hotelEntity.getName(), hotelEntity.getCity(), hotelEntity.getType(), hotelEntity.getGuestsQuantity(), hotelEntity.getRoomsQuantity(), hotelEntity.getBathsQuantity(), hotelEntity.getBedsQuantity());
         return hotel;
     }
 
@@ -38,7 +36,7 @@ public class HotelServices implements IHotelServices {
     public List<HotelDto> getAll() {
         List<HotelDto> hotelList = new ArrayList<>();
         for (HotelEntity hotelEntity : iHotelRepository.findAll()) {
-            hotelList.add(new HotelDto(hotelEntity.getName(), hotelEntity.getCity(), hotelEntity.getType(), hotelEntity.getGuestsQuantity(), hotelEntity.getRoomsQuantity(), hotelEntity.getBathsQuantity(), hotelEntity.getBedsQuantity()));
+            hotelList.add(new HotelDto(hotelEntity.getId(), hotelEntity.getName(), hotelEntity.getCity(), hotelEntity.getType(), hotelEntity.getGuestsQuantity(), hotelEntity.getRoomsQuantity(), hotelEntity.getBathsQuantity(), hotelEntity.getBedsQuantity()));
         }
         return hotelList;
     }
